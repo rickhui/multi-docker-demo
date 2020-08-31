@@ -3,23 +3,23 @@ services:
   - docker
 
 before_install:
-  - docker build -t rickhui/react-test -f ./client/Dockerfile.dev ./client
+  - docker build -t rickhuihk/react-test -f ./client/Dockerfile.dev ./client
 
 script:
-  - docker run -e CI=true rickhui/react-test npm run test
+  - docker run -e CI=true rickhuihk/react-test npm run test
 
 after_success:
-  - docker build -t rickhui/multi-client ./client
-  - docker build -t rickhui/multi-nginx ./nginx
-  - docker build -t rickhui/multi-server ./server
-  - docker build -t rickhui/multi-worker ./worker
+  - docker build -t rickhuihk/multi-client ./client
+  - docker build -t rickhuihk/multi-nginx ./nginx
+  - docker build -t rickhuihk/multi-server ./server
+  - docker build -t rickhuihk/multi-worker ./worker
   # Log in to the docker CLI
   - echo "$DOCKER_PW" | docker login -u "$DOCKER_ID" --password-stdin
   # Take those images and push them to docker hub
-  - docker push rickhui/multi-client
-  - docker push rickhui/multi-nginx
-  - docker push rickhui/multi-server
-  - docker push rickhui/multi-worker
+  - docker push rickhuihk/multi-client
+  - docker push rickhuihk/multi-nginx
+  - docker push rickhuihk/multi-server
+  - docker push rickhuihk/multi-worker
 # deploy:
 #   provider: elasticbeanstalk
 #   region: "us-west-2"
