@@ -20,14 +20,16 @@ after_success:
   - docker push rickhuihk/multi-nginx
   - docker push rickhuihk/multi-server
   - docker push rickhuihk/multi-worker
-# deploy:
-#   provider: elasticbeanstalk
-#   region: "us-west-2"
-#   app: "docker-react-demo"
-#   env: "DockerReactDemo-env"
-#   bucket_name: "elasticbeanstalk-us-west-2-081763001095"
-#   bucket_path: "docker-react-demo"
-#   on:
-#     branch: master
-#   access_key_id: $AWS_ACCESS_KEY
-#   secret_access_key: $AWS_SECRET_KEY
+
+deploy:
+  edge: true
+  provider: elasticbeanstalk
+  region: "us-west-2"
+  app: "multi-docker"
+  env: "MultiDocker-env"
+  bucket_name: "elasticbeanstalk-us-west-2-081763001095"
+  bucket_path: "docker-multi"
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
